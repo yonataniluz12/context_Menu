@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
      * The Chek.
      */
     int seriesType = -1;
-
+    String [] arr = new String[20];
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,10 +60,16 @@ public class MainActivity extends AppCompatActivity {
         btn1 = findViewById(R.id.btn1);
 
         btn1.setOnClickListener(view -> {
-            if (rB1.isChecked()) seriesType=0;
-
-            else if(rB2.isChecked()) seriesType=1;
-
+            if (rB1.isChecked()) {
+                seriesType = 0;
+                for (int i = 1; i < arr.length; i++)
+                    arr[i] = (firstnum + multipliermum * (i)) + "";
+            }
+            else if(rB2.isChecked()) {
+                seriesType = 1;
+                for (int i = 1; i < arr.length; i++)
+                    arr[i] = String.format("%s", (firstnum * Math.pow(multipliermum, i)));
+            }
             if (seriesType==-1)
                 Toast.makeText(MainActivity.this, "You must chose the series type", Toast.LENGTH_LONG).show();
 
@@ -71,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 si.putExtra(" multipliermum", multipliermum);
                 si.putExtra("firstnum",firstnum);
                 si.putExtra("seriesType", seriesType);
+                si.putExtra("arr",arr);
                 startActivity(si);
             }
         });
