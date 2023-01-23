@@ -10,7 +10,7 @@
         android:id="@+id/textView"
         android:layout_width="285dp"
         android:layout_height="184dp"
-        android:text="Credits: בראשית ברא ה"
+        android:text="Credits: albert"
         android:textColor="@color/black"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,4 +18,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.499" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="184dp"
+        android:layout_height="98dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

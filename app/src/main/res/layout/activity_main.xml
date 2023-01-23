@@ -23,13 +23,25 @@
             android:layout_height="0dp"
             android:layout_weight="1" />
 
-        <ToggleButton
-            android:id="@+id/tB"
+        <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="10"
-            android:textOff="enter to giometri"
-            android:textOn="enter to arithmetical" />
+            android:layout_weight="10">
+
+            <RadioButton
+                android:id="@+id/rB1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5"
+                android:text="arithmetical" />
+
+            <RadioButton
+                android:id="@+id/rB2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5"
+                android:text="geometrical" />
+        </RadioGroup>
 
         <Space
             android:layout_width="match_parent"
@@ -65,7 +77,7 @@
             android:layout_weight="1" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btn1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="5"

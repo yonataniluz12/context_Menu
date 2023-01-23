@@ -18,71 +18,57 @@ import android.widget.TextView;
  * The type Main activity 2.
  */
 public class MainActivity2 extends AppCompatActivity implements View.OnCreateContextMenuListener {
-    /**
-     * The L v.
-     */
     ListView lV;
-    /**
-     * The T v.
-     */
     TextView tV;
-    /**
-     * The Gi.
-     */
-    Intent gi = getIntent();
-    int chek;
-    double firstnum, multipliermum;
+    boolean type;
+    double firstnum, multipliermum,sum;
+    String [] arr = new String[20];
+    int seriesType;
+    int index;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
         lV = findViewById(R.id.lV);
-        tV =findViewById(R.id.tV);
-        firstnum = gi.getDoubleExtra("firstnum", 0);
-        multipliermum=gi.getDoubleExtra("multipliermum", 0);
-        chek =gi.getIntExtra("seriesType", 0);
-        String[] arr = gi.getStringArrayExtra("arr");
-        ArrayAdapter <String> adp = new ArrayAdapter<>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,arr);
+        tV = findViewById(R.id.tV);
+
+        Intent gi = getIntent();
+        firstnum =gi.getDoubleExtra("firstnum", 0);
+        multipliermum =gi.getDoubleExtra("multipliermum", 0);
+        seriesType = gi.getIntExtra("seriesType",0);
+        arr[0] = firstnum + "";
+        ArrayAdapter<String> adp = new ArrayAdapter<>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, arr);
         lV.setAdapter(adp);
         lV.setOnCreateContextMenuListener(this);
+        lV.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                index = i;
+                return false;
+            }
+        });
+
     }
-    public boolean onCreateOptionsMenu(Menu menu){
-        menu.add(0,0,100,"next");
-        menu.add(0,0,200,"back");
-        return true;
-    }
+
+        @Override
+        public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo) {
+            menu.setHeaderTitle("select");
+            menu.add("index");
+            menu.add("sum");
+            menu.add("back");
+
+        }
+    @SuppressLint("SetTextI18n")
+    @Override
     public boolean onOptionsItemSelected(MenuItem item){
         String str=item.getTitle().toString();
-        Intent si1 = null;
-        if(str.equals("next")) si1 =new Intent(getApplicationContext(),MainActivity3.class );
-        else if (str.equals("back")) si1=new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(si1);
+        if(str.equals("index")){
+            tV.setText(index + "");
+        }
+        if(str.equals("back"))
+            finish();
         return true;
-    }
-    public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo) {
-        menu.add("index");
-        menu.add("sum");
-    }
-    @SuppressLint("SetTextI18n")
-    public boolean onContextItemSelected(MenuItem item) {
-        String str = item.getTitle().toString();
-        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        int index = info.position;
-
-        if (str.equals("sum")) {
-            double sum;
-            if (chek == 1){
-                sum = ((2*firstnum +index*multipliermum)*(index+1)) /2;
-            }
-            else{
-                sum= firstnum * (((Math.pow(multipliermum,index+1))-1)/(multipliermum-1));
-            }
-            tV.setText(String.format("%s", sum));
         }
-        else{
-            tV.setText("x="+(index+1));
-        }
-        return super.onContextItemSelected(item);
     }
-}
