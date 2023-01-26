@@ -18,13 +18,40 @@ import android.widget.TextView;
  * The type Main activity 2.
  */
 public class MainActivity2 extends AppCompatActivity implements View.OnCreateContextMenuListener {
+    /**
+     * The L v.
+     */
     ListView lV;
+    /**
+     * The T v.
+     */
     TextView tV;
 
+    /**
+     * The Type.
+     */
     boolean type;
-    double firstnum, multipliermum,sum;
+    /**
+     * The Firstnum.
+     */
+    double firstnum, /**
+     * The Multipliermum.
+     */
+    multipliermum, /**
+     * The Sum.
+     */
+    sum;
+    /**
+     * The Arr.
+     */
     String [] arr = new String[20];
+    /**
+     * The Series type.
+     */
     int seriesType;
+    /**
+     * The Index.
+     */
     int index;
     @SuppressLint("MissingInflatedId")
     @Override
@@ -65,11 +92,8 @@ public class MainActivity2 extends AppCompatActivity implements View.OnCreateCon
     public boolean onOptionsItemSelected(MenuItem item){
         String str=item.getTitle().toString();
         Intent si1 = null;
-        if(str.equals("next")){
+        if(str.equals("next"))
             si1 =new Intent(getApplicationContext(), MainActivity3.class);
-        }
-        else if(str.equals("back"))
-            si1 = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(si1);
         return true;
     }
@@ -99,4 +123,4 @@ public class MainActivity2 extends AppCompatActivity implements View.OnCreateCon
         }
         return super.onContextItemSelected(item);
     }
-    }
+}

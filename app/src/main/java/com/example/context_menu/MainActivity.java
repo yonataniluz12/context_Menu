@@ -17,6 +17,9 @@ import android.widget.ToggleButton;
  * The type Main activity.
  */
 public class MainActivity extends AppCompatActivity {
+    /**
+     * The Btn 1.
+     */
     Button btn1;
     /**
      * The E t.
@@ -29,7 +32,10 @@ public class MainActivity extends AppCompatActivity {
     /**
      * The T b.
      */
-    RadioButton rB1,rB2;
+    RadioButton rB1, /**
+     * The R b 2.
+     */
+    rB2;
     /**
      * The Firstnum.
      */
@@ -46,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
      * The Chek.
      */
     int seriesType = -1;
+    /**
+     * The Arr.
+     */
     String [] arr = new String[20];
     @SuppressLint("MissingInflatedId")
     @Override
@@ -83,6 +92,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    /**
+     * Input ok boolean.
+     *
+     * @return the boolean
+     */
     public boolean inputOk() {
         String st = eT1.getText().toString();
         if (st.matches("-?\\d+(\\.\\d+)?")) {
